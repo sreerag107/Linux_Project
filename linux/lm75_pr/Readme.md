@@ -143,6 +143,15 @@ static const struct of_device_id lm75_of_match[];
 
 which automatically creates the I2C client during boot.
 
+created my own dtsi and included in the main dts file (am335x-boneblack.dts)
+compiled the dts file using the command in linux src tree.
+copied the newely created dtb file the tftp folder (/var/lib/tftp).
+it makes transfer to beagle bone easy.
+command to build the dtb file
+```bash 
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x-boneblack.dtb
+```
+
 ---
 
 # Temperature Read Flow
@@ -176,8 +185,20 @@ Temperature (°C)
 # Building the Driver
 
 ```bash
-export ARCH=arm
-export CROSS_COMPILE=/path/to/arm-linux-gnueabihf-
+obj-m+=lm75_driver.o
+Kernel:=/home/sreerag/bbwork/linux-5.10.168-ti-rt-r76
+PWD:=$(shell pwd)
+ARCH:=arm
+CROSS_COMPILE:=/home/sreerag/bbwork/buildroot-2025.05/output/host/bin/arm-linux-gnueabihf-
+
+
+all:
+	$(MAKE) -C $(Kernel) M=$(PWD) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) modules
+
+
+clean:
+	$(MAKE) -C $(Kernel) M=$(PWD) clean
+ 
 
 make
 ```
@@ -202,6 +223,19 @@ The temp data is : 28.625 C
 
 ---
 
+# Removing the Driver
+
+```bash
+rmmod lm75_driver.ko
+```
+
+Kernel Output
+
+```
+LM75 DRIVER IS REMOVED
+
+```
+
 # Hardware Bring-up and Validation
 
 Before developing the Linux driver, the hardware and I2C communication were verified step by step.
@@ -210,10 +244,10 @@ Before developing the Linux driver, the hardware and I2C communication were veri
 
 | LM75BD Pin | BeagleBone Black |
 |------------|------------------|
-| VCC | 3.3V |
-| GND | GND |
-| SDA | I2C2_SDA |
-| SCL | I2C2_SCL |
+| VCC        |     3.3V         |
+| GND        |     GND          |
+| SDA        |     I2C2_SDA     |
+| SCL        |    I2C2_SCL      |
 
 ---
 
@@ -224,11 +258,12 @@ The following checks were performed before software development:
 ### Voltage Verification
 
 Measured using a Digital Multimeter.
+
 VCC : 3.3V
 GND : 0V
 SCL : 3.3V 
 SDA : 3.3V
----
+
 
 ### Continuity / Resistance Checks
 
@@ -366,6 +401,7 @@ This confirmed correct communication before moving into kernel-space driver deve
 - Support THYST Register
 - Support TOS Register
 - Improve Error Handling
+- Implementing SYSFS attribute for user interface.
 - Upstream Kernel Coding Style
 
 ---
