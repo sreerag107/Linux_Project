@@ -1,0 +1,8 @@
+serverip=192.168.1.1
+ipaddr=192.168.1.2
+
+nfsargs=setenv bootargs console=ttyO0,115200n8 root=/dev/nfs rw nfsroot=192.168.1.1:/srv/nfs/bbb-rootfs,v3,tcp ip=192.168.1.2:::::eth0
+
+nfsboot=echo Booting from TFTP/NFS...; tftp ${loadaddr} /uImage; tftp ${fdtaddr} /am335x-boneblack.dtb; run nfsargs; bootm ${loadaddr} - ${fdtaddr}
+
+uenvcmd=run nfsboot
