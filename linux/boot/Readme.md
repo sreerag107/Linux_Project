@@ -161,14 +161,10 @@ Linux_Project
 │      ├── nfs.md
 │      ├── uEnv.txt
 │      └── Boot Logs
-│
-│── buildroot/
-│
-│── kernel/
-│
-│── screenshots/
-│
-└── README.md
+       │── RFS_buildroot/
+       │── linux_output/
+       │── screenshots/
+       └── README.md
 ```
 
 ---
