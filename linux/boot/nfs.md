@@ -1,22 +1,22 @@
 //Install NFS Server
 
-sudo apt install nfs-kernel-server
+$ sudo apt install nfs-kernel-server
 
 //Verify the installation.
 
-sudo systemctl status nfs-kernel-server
+$ sudo systemctl status nfs-kernel-server
 
 Expected output: Active: active (running)
 
 
 //Create a directory that will contain the Buildroot root filesystem.
 
-sudo mkdir -p /srv/nfs/rootfs
+$ sudo mkdir -p /srv/nfs/rootfs
 
 
 //Open the exports configuration file.
 
-sudo nano /etc/exports
+$ sudo nano /etc/exports
 
 Add the following line.
 
@@ -33,19 +33,19 @@ no_root_squash:			Allow the target root user to remain root on the exported file
 
 //Reload the exports table.
 
-sudo exportfs -ra
+$ sudo exportfs -ra
 
 //Restart the NFS Service
 
-sudo systemctl restart nfs-kernel-server
+$ sudo systemctl restart nfs-kernel-server
 
 //Verify the service.
 
-sudo systemctl status nfs-kernel-server
+$ sudo systemctl status nfs-kernel-server
 
 //Enable automatic startup after reboot.
 
-sudo systemctl enable nfs-kernel-server
+$ sudo systemctl enable nfs-kernel-server
 
 
 
