@@ -23,8 +23,11 @@ Add the following line.
 /srv/nfs/rootfs *(rw,sync,no_subtree_check,no_root_squash)
 
 rw   :				Allow read and write access
+
 sync :				Write changes to disk immediately
+
 no_subtree_check:		Disable subtree verification for better performance
+
 no_root_squash:			Allow the target root user to remain root on the exported filesystem
 
 
