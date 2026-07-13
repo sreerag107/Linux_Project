@@ -1,1 +1,0 @@
-cmd_/home/sreerag/projects/spi_w25q65/driver/Module.symvers := sed 's/ko$$/o/' /home/sreerag/projects/spi_w25q65/driver/modules.order | scripts/mod/modpost -m    -o /home/sreerag/projects/spi_w25q65/driver/Module.symvers -e -i Module.symvers   -T -

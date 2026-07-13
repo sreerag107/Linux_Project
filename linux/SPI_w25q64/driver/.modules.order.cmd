@@ -1,1 +1,0 @@
-cmd_/home/sreerag/projects/spi_w25q65/driver/modules.order := {   echo /home/sreerag/projects/spi_w25q65/driver/spi_w25q64.ko; :; } | awk '!x[$$0]++' - > /home/sreerag/projects/spi_w25q65/driver/modules.order
