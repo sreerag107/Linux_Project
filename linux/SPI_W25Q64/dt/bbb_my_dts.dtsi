@@ -1,0 +1,87 @@
+
+/******************************DEVICE NODE FOR GPIO FOR TESTING WITH LED***************************************/
+/{
+
+bb_gpio_dev{
+	compatible="org,bb-gpio-sys";
+	gpio0{
+		label="gpio2.2";
+		bb-gpios=<&gpio2 2 GPIO_ACTIVE_HIGH>;  // <gpiocontroller pin active_state_slave>
+	};
+	gpio1{
+		label="gpio2.3";
+		bb-gpios=<&gpio2 3 GPIO_ACTIVE_HIGH>;
+
+	};
+	gpio2{
+
+		label="gpio2.4";
+		bb-gpios=<&gpio2 4 GPIO_ACTIVE_HIGH>;
+	
+
+	};
+	
+	gpio3{
+		label="userled0-gpio1.21";
+		bb-gpios=<&gpio1 21 GPIO_ACTIVE_HIGH>;
+		
+	};
+	
+	gpio4{
+		label="userled1-gpio1.22";
+		bb-gpios=<&gpio1 22 GPIO_ACTIVE_HIGH>;
+
+	};
+
+
+
+};
+
+
+
+
+};
+
+/******************************************************************************************************************************/
+
+
+/******************* LM75 DT to tell the kernel there is a device of address 0x48 on i2c2 bus**********************************/
+
+&i2c2{
+	status= "okay";
+
+	lm75@48{
+	compatible="sree,lm75";
+	reg=<0x48>;
+};
+
+
+};
+
+/******************************************************************************************************************************/
+
+&am33xx_pinmux {
+	spi0_pins: pinmux_spi0_pins {
+		pinctrl-single,pins = <
+			AM33XX_PADCONF(AM335X_PIN_SPI0_SCLK, PIN_INPUT_PULLUP, MUX_MODE0)
+			AM33XX_PADCONF(AM335X_PIN_SPI0_D0,   PIN_INPUT_PULLUP, MUX_MODE0)
+			AM33XX_PADCONF(AM335X_PIN_SPI0_D1,   PIN_OUTPUT,       MUX_MODE0)
+			AM33XX_PADCONF(AM335X_PIN_SPI0_CS0,  PIN_OUTPUT,       MUX_MODE0)
+		>;
+	};
+};
+
+
+
+
+&spi0{
+	pinctrl-names ="default";
+	pinctrl-0 = <&spi0_pins>;
+	status= "okay";
+
+	 w25q62@0 {
+                compatible = "sree,w25q";
+                reg = <0>;
+                spi-max-frequency = <1000000>;
+        };
+};
