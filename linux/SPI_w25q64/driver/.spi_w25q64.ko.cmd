@@ -1,0 +1,1 @@
+cmd_/home/sreerag/projects/spi_w25q65/driver/spi_w25q64.ko := /home/sreerag/bbwork/buildroot-2025.05/output/host/bin/arm-linux-gnueabihf-ld -r -EL -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/sreerag/projects/spi_w25q65/driver/spi_w25q64.ko /home/sreerag/projects/spi_w25q65/driver/spi_w25q64.o /home/sreerag/projects/spi_w25q65/driver/spi_w25q64.mod.o;  true
