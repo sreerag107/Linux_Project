@@ -1,0 +1,12 @@
+../rtos/event_groups.c:145:28:xEventGroupCreate	2
+../rtos/event_groups.c:185:17:xEventGroupSync	9
+../rtos/event_groups.c:312:17:xEventGroupWaitBits	14
+../rtos/event_groups.c:472:17:xEventGroupClearBits	3
+../rtos/event_groups.c:524:17:xEventGroupGetBitsFromISR	1
+../rtos/event_groups.c:547:17:xEventGroupSetBits	9
+../rtos/event_groups.c:650:10:vEventGroupDelete	4
+../rtos/event_groups.c:748:10:vEventGroupSetBitsCallback	1
+../rtos/event_groups.c:764:10:vEventGroupClearBitsCallback	1
+../rtos/event_groups.c:778:23:prvTestWaitCondition	4
+../rtos/event_groups.c:838:21:uxEventGroupGetNumber	2
+../rtos/event_groups.c:868:14:vEventGroupSetNumber	1
