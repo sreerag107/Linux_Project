@@ -120,22 +120,6 @@ This project was created to understand:
 
 ---
 
-## Roadmap
-
-Upcoming features:
-
-- [ ] Queue
-- [ ] Binary Semaphore
-- [ ] Mutex
-- [ ] Counting Semaphore
-- [ ] Event Groups
-- [ ] Software Timers
-- [ ] LM75 I2C Driver
-- [ ] Temperature Monitoring Application
-- [ ] UART Logging
-- [ ] System Architecture Diagram
-
----
 
 ## License
 
